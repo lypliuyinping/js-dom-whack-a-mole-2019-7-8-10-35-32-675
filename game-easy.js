@@ -43,6 +43,11 @@ window.onload = function () {
      */
     function resetScoreAndTime() {
         // TODO: 写游戏的初始化设置
+		let lastHole;
+		let timeUp = false;
+		let score = 0;
+		let gameTime = 10000;
+		
     }
 
     /**
