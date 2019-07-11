@@ -48,10 +48,11 @@ window.onload = function () {
      */
     function resetScoreAndTime() {
         // TODO: 写游戏的初始化设置
-		let lastHole;
-		let timeUp = false;
-		let score = 0;
-		let gameTime = 10000;
+		 titleH1.innerHTML="WHACK-A-MOLE";
+                scoreBoard.innerHTML=0;
+		 timeUp = false;
+		 score = 0;
+		 gameTime = 10000;
 		
     }
 
@@ -86,10 +87,19 @@ window.onload = function () {
      */
     function randomHole(holes) {
         // TODO: 写地鼠随机选择钻出地洞的逻辑，如果与上一个是相同地洞，则重新选择一个地洞.
-			var numtest=Math.floor(Math.random()*6);
-		  // console.log(numtest+"---"+holes[numtest]);
-		   return holes[numtest];
-        //return null;
+		 var hole;
+    		var numtest=Math.floor(Math.random()*6);
+    		hole=holes[numtest];
+    	if(lastHole!=null){
+    	
+    		 if(hole==lastHole){
+    		 	var numtest=Math.floor(Math.random()*6);
+    		hole=holes[numtest];
+    		 }
+    	}else{
+    		lastHole=hole;
+    	} 
+       return hole;
     }
 
     /**
@@ -117,8 +127,10 @@ window.onload = function () {
      */
     moles.forEach(mole => mole.addEventListener('click', function (e) {
         // TODO: 在这里写用户点击地鼠发生的事.
+				if(!timeUp){
 				score++;
 				scoreBoard.innerHTML=score;
+				}
     }));
 
 };
